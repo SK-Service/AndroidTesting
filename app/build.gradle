@@ -3,13 +3,14 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
-packagingOptions {
-    exclude "META-INF/AL2.0",
-    "org.jetbrains.kotlinx",
-            "kotlinx-coroutines-debug"
-}
-
 android {
+    packagingOptions {
+        exclude "META-INF/AL2.0"
+        exclude "META-INF/LGPL2.1"
+        exclude "org.jetbrains.kotlinx"
+        exclude "kotlinx-coroutines-debug"
+    }
+
     compileSdkVersion rootProject.compileSdkVersion
 
     defaultConfig {
@@ -78,6 +79,8 @@ dependencies {
     // AndroidX Test - Instrumented testing
     androidTestImplementation "androidx.test.ext:junit:$androidXTestExtKotlinRunnerVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
+
     // AndroidX Test - JVM testing
     testImplementation "androidx.test:core-ktx:$androidXTestCoreVersion"
     testImplementation "org.robolectric:robolectric:$robolectricVersion"
